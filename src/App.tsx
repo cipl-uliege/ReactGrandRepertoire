@@ -7,11 +7,8 @@ import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.min.css'
 import SpinnerPage from "./components/SpinnerPage";
 
-//Bonne chance à celui qui récupérera ce code. Je n'ai eu malheureusement qu'au maximum 3 semaines 
-//(une quinzaine de jours si on met tout bout à bout) pour réaliser ce projet aussi bien en back qu'en front. (°ロ°) 
 
 function App() {
-
   const SearchByCategories = React.lazy(() => import("./pages/search/category/MainSearchCategory"));
   const SearchByAuthorTitle = React.lazy(() => import("./pages/search/authorTitle/MainSearchAuthorTitle"));
   const SheetMusicsFromGroupId = React.lazy(() => import("./pages/sheetmusic/fromGroupId/MainSheetMusicGroupId"));
