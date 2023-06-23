@@ -1,0 +1,175 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    font-size: 16px;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  button:disabled {
+    opacity: 0.2;
+    cursor: not-allowed;
+  }
+
+  button:disabled label {
+    cursor: not-allowed;
+  }
+
+  select:disabled {
+    opacity: 0.2;
+    cursor: not-allowed;
+  }
+}
+
+@layer utilities {
+
+  #navDesktop .parent.active{
+    color: #f5cb5c;
+  }
+  
+  /*ce sélecteur ne marche pas pour Firefox mais bel et bien pour tous les autres navigateurs
+  ce n'est pas fort impactant pour Firefox, il sert juste à highlight "Chercher par..." en jaune quand on est dans une page de
+  recherche par auteur/nbr d'instruments etc... sur desktop
+  */
+  #navDesktop .parent:has(.active){ 
+    color: #f5cb5c;
+  }
+
+  #navMobile .parent.active, #navDesktop .child.active{
+    color: #c39f00
+  }
+
+  .hideScrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .hideScrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /*me sert juste à animer les border radius des boutons pour filter les recherches*/
+  .buttonFilterAccordion {
+    transition: all 150ms ease-in-out;
+  }
+
+  .buttonFilterAccordion[aria-expanded="true"] {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+  }
+
+  .buttonFilterAccordion[aria-expanded="false"] {
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+  }
+  /************************************************************************************/
+
+  .lds-dual-ring {
+    display: block;
+    width: 80px;
+    height: 80px;
+  }
+
+  .lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid #fff;
+    border-color: #1b1b1b transparent #1b1b1b transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+  }
+
+  .fadeInFadeOut {
+    animation-name: fadeInFadeOutAnimation;
+    animation-iteration-count: infinite;
+    animation-duration: 1s;
+    animation-direction: alternate;
+  }
+
+  .zoomIn {
+    animation: zoomIn;
+    animation-delay: 150ms;
+    animation-duration: 0.4s;
+    animation-direction: normal;
+    animation-timing-function: ease-out;
+  }
+
+  .lds-spinner-page {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-spinner-page div {
+    display: inline-block;
+    position: absolute;
+    left: 8px;
+    width: 16px;
+    background: #000000;
+    animation: lds-spinner-page 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+  }
+  .lds-spinner-page div:nth-child(1) {
+    left: 8px;
+    animation-delay: -0.24s;
+  }
+  .lds-spinner-page div:nth-child(2) {
+    left: 32px;
+    animation-delay: -0.12s;
+  }
+  .lds-spinner-page div:nth-child(3) {
+    left: 56px;
+    animation-delay: 0;
+  }
+  @keyframes lds-spinner-page {
+    0% {
+      top: 8px;
+      height: 64px;
+    }
+    50%, 100% {
+      top: 24px;
+      height: 32px;
+    }
+  }
+
+  @keyframes fadeInFadeOutAnimation {
+    0% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0.55;
+    }
+  }
+
+  @keyframes lds-dual-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes zoomIn {
+    0% {
+      transform: scale(0.8);
+    }
+
+    75% {
+      transform: scale(1.1);
+    }
+
+    100% {
+      transform: scale(1);
+    }
+  }
+}

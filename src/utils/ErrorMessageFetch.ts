@@ -1,0 +1,1 @@
+export const ERROR_MSG_FETCH = "Impossible de récupérer les données. Rafraichissez la page ou si le problème persiste contactez la personne en charge du site."; 
